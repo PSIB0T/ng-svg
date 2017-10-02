@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IBeamInput, IBeamOutput } from './beamInterfaces';
 
 @Injectable()
 export class BeamService {
@@ -41,19 +42,3 @@ export class BeamService {
   }
 
 }
-
-export interface IBeamInput {
-  l: number;
-  a: number;
-  w: number;
-}
-
-export interface IBeamOutput {
-  va: number;
-  vb1: number;
-  vb2: number;
-  r1: number;
-  r2: number;
-  msagMax: number;
-  mhogMax: number;
-};

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IBeamInput, IBeamOutput } from './../beam.service' ;
+import { IBeamInput, IBeamOutput } from './../beamInterfaces';
 
 @Component({
   selector: 'app-beamdisplay',

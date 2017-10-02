@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BeamService, IBeamInput, IBeamOutput } from './../beam.service';
+import { BeamService } from './../beam.service';
+import { IBeamInput, IBeamOutput } from './../beamInterfaces';
 
 @Component({
   selector: 'app-beam',

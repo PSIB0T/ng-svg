@@ -3,7 +3,7 @@ import { Component,
          Input,
          Output,
          EventEmitter } from '@angular/core';
-import { IBeamInput } from './../beam.service';
+import { IBeamInput } from './../beamInterfaces';
 
 @Component({
   selector: 'app-beamcontrols',
