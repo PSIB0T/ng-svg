@@ -1,27 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { BeamService, ICircle } from './../beam.service';
+import { BeamService, IBeamInput, IBeamOutput } from './../beam.service';
 
 @Component({
   selector: 'app-beam',
   template: `
-    <app-beamcontrols [circle]="circle" (emitRadius)="computeArea($event)"></app-beamcontrols>
-    <app-beamdisplay [circle]="circle" [area]="area"></app-beamdisplay>
+    <app-beamcontrols [beamInput]="beamInput" (onBeamInputChange)="recomputeCredentials($event)">
+    </app-beamcontrols>
+    <app-beamdisplay [beamInput]="beamInput" [beamOutput]="beamOutput"></app-beamdisplay>
   `,
   styles: []
 })
 export class BeamComponent implements OnInit {
 
-  private circle: ICircle;
-  private area: number;
+  private beamInput: IBeamInput;
+  private beamOutput: IBeamOutput;
   constructor(private _beamService: BeamService) { }
 
   ngOnInit() {
-    this.circle = this._beamService.getCircle();
-    this.computeArea(this.circle.r);
+    this.beamInput = this._beamService.getInput();
+    this.beamOutput = this._beamService.computeCredentials();
   }
 
-  computeArea(radius: number) {
-    this.area = Math.PI * Math.pow(radius, 2);
+  recomputeCredentials() {
+    this.beamOutput = this._beamService.computeCredentials();
   }
 
 }

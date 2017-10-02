@@ -3,28 +3,37 @@ import { Component,
          Input,
          Output,
          EventEmitter } from '@angular/core';
-import { ICircle } from './../beam.service';
+import { IBeamInput } from './../beam.service';
 
 @Component({
   selector: 'app-beamcontrols',
   template: `
-    <input type="range" [(ngModel)]="circle.x" min="0" max="200"><span>{{circle.x}}</span><br />
-    <input type="range" [(ngModel)]="circle.y" min="0" max="200"><span>{{circle.y}}</span><br />
-    <input type="range" [(ngModel)]="circle.r" min="0" max="200" (change)="radiusChange()"><span>{{circle.r}}</span><br />
+    <span>Span of beam</span>
+    <input type="range" [(ngModel)]="beamInput.l" min="0" max="200" (change)="onInputChange()">
+    <span>{{beamInput.l}}</span>
+    <br />
+    <span>Overhang length</span>
+    <input type="range" [(ngModel)]="beamInput.a" min="0" max="200" (change)="onInputChange()">
+    <span>{{beamInput.a}}</span>
+    <br />
+    <span>Loading magnitude</span>
+    <input type="range" [(ngModel)]="beamInput.w" min="0" max="200" (change)="onInputChange()">
+    <span>{{beamInput.w}}</span>
+    <br />
   `,
   styles: []
 })
 export class BeamcontrolsComponent implements OnInit {
-  @Input() circle: ICircle;
-  @Output() emitRadius: EventEmitter<number> = new EventEmitter();
+  @Input() beamInput: IBeamInput;
+  @Output() onBeamInputChange: EventEmitter<IBeamInput> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  radiusChange() {
-    this.emitRadius.emit(this.circle.r)
+  onInputChange() {
+    this.onBeamInputChange.emit(this.beamInput);
   }
 
 }
