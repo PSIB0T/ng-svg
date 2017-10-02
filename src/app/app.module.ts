@@ -10,11 +10,14 @@ import { ControlsComponent } from './controls/controls.component';
 import { GraphComponent } from './graph/graph.component';
 import { DataviewComponent } from './dataview/dataview.component';
 import { StatService } from 'app/stat.service';
-import { StatsComponent } from "app/stats/stats.component";
-import { BeamComponent } from "app/beam/beam.component";
-import { SectionComponent } from "app/section/section.component";
-import { HomeComponent } from "app/home/home.component";
+import { BeamService } from './beam.service';
+import { StatsComponent } from 'app/stats/stats.component';
+import { BeamComponent } from 'app/beam/beam.component';
+import { SectionComponent } from 'app/section/section.component';
+import { HomeComponent } from 'app/home/home.component';
 import { DimensionComponent } from './dimension/dimension.component';
+import { BeamdisplayComponent } from './beamdisplay/beamdisplay.component';
+import { BeamcontrolsComponent } from './beamcontrols/beamcontrols.component';
 
 const appRoutes: Routes = [
   {path: 'stats', component: StatsComponent},
@@ -34,7 +37,9 @@ const appRoutes: Routes = [
     ControlsComponent,
     GraphComponent,
     DataviewComponent,
-    DimensionComponent
+    DimensionComponent,
+    BeamdisplayComponent,
+    BeamcontrolsComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,10 @@ const appRoutes: Routes = [
       //{ enableTracing: true} //for debugging only
     )
   ],
-  providers: [StatService],
+  providers: [
+    StatService,
+    BeamService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
